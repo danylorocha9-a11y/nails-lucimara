@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Espaço Lucimara Nails 💅</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff6fa;--accent:#ff6fb1;--muted:#8b6b7a;--gold:#e6b7a7;--card:#fff;--shadow:0 6px 20px rgba(133,73,118,0.12)}
+*{box-sizing:border-box} body{margin:0;font-family:Montserrat,system-ui,Arial;background:linear-gradient(180deg,var(--bg),#fff);color:#3b2b33}
+.wrap{max-width:1100px;margin:36px auto;padding:28px} header{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.mark{width:68px;height:68px;border-radius:16px;background:linear-gradient(135deg,var(--accent),#ffcbe2);display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:var(--shadow)}
+nav{margin-left:auto;display:flex;gap:8px;align-items:center}
+nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px}
+nav a.btn{background:var(--accent);color:#fff}
+.hero{display:grid;grid-template-columns:1fr 420px;gap:20px;align-items:center;background:linear-gradient(135deg,#fff,rgba(255,207,227,0.35));padding:26px;border-radius:18px}
+.hero img{width:100%;border-radius:12px;object-fit:cover;height:320px;cursor:pointer}
+.combos,.galeria{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:12px}
+img.card-img{width:100%;border-radius:12px;object-fit:cover;height:260px;cursor:pointer}
+.card{background:var(--card);padding:16px;border-radius:12px;box-shadow:var(--shadow)}
+.btn{background:var(--accent);color:white;padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:700}
+.muted{color:var(--muted);font-size:13px}
+.calendar{display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start;margin-top:12px}
+.cal-box{width:320px;background:var(--card);padding:12px;border-radius:10px;box-shadow:var(--shadow)}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:8px}
+.cell{height:40px;display:flex;align-items:center;justify-content:center;border-radius:8px;color:var(--muted);cursor:pointer}
+.cell.booked{background:linear-gradient(135deg,var(--gold),rgba(255,192,203,0.25));font-weight:700;color:#3b2b33}
+.bookings-list{flex:1;background:var(--card);padding:12px;border-radius:10px;box-shadow:var(--shadow);min-height:160px}
+label{font-weight:600;font-size:14px}
+input[type="time"], input[type="date"], input[type="number"], input[type="text"], select{width:100%;padding:10px;border-radius:8px;border:1px solid #f0d8e6;margin-top:6px}
+.small{width:120px}
+@media(max-width:920px){.hero{grid-template-columns:1fr} .cal-box{width:100%}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div style="display:flex;gap:12px;align-items:center">
+      <div class="mark">💅</div>
+      <div>
+        <h1 style="margin:0;font-family:'Playfair Display',serif">Espaço Lucimara Nails</h1>
+        <div class="muted">Unhas | Nail Art | Agendamentos</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#combos" class="muted">Combos</a>
+      <a href="#tabelas" class="muted">Serviços</a>
+      <a href="#agendamento" class="btn">Agendar Agora</a>
+      <a href="#calendario" class="muted">📅 Calendário</a>
+    </nav>
+  </header>
+
+  <section class="hero card">
+    <div>
+      <h2>Beleza nos detalhes 💖</h2>
+      <p class="muted">No Espaço Lucimara Nails, suas unhas ganham vida com arte, cuidado e muito carinho. Agende seu horário e venha viver essa experiência de beleza e autoexpressão!</p>
+      <div style="margin-top:12px;display:flex;gap:8px">
+        <button class="btn" onclick="document.getElementById('agendamento').scrollIntoView({behavior:'smooth'})">Agendar Agora</button>
+        <a class="muted" href="https://www.instagram.com/espaco_lucimara_nails" target="_blank" style="display:flex;align-items:center;text-decoration:none;padding:8px;border-radius:8px"><img src="assets/instagram.svg" alt="insta" style="width:18px;height:18px;margin-right:8px"> @espaco_lucimara_nails</a>
+      </div>
+    </div>
+    <img src="assets/Alongamentos.jpg" alt="principal" class="card-img" onclick="openPopup(this.src)">
+  </section>
+
+  <section id="combos" class="card">
+    <h2>Combos Promocionais</h2>
+    <div class="combos">
+      <div class="card">
+        <img src="assets/combo R$100.jpg" class="card-img combo-click" data-service="Combo Manutenção + Esmaltação em Gel" data-price="R$ 100,00" data-duration="120" onclick="openPopup(this.src)">
+        <h4 style="margin:8px 0 4px">Combo Manutenção + Esmaltação em Gel</h4>
+        <p class="muted">Manutenção + esmaltação em gel + cutilagem mão e pé.</p>
+        <strong>R$ 100,00</strong>
+      </div>
+      <div class="card">
+        <img src="assets/combo de R$105.jpg" class="card-img combo-click" data-service="Manutenção + arte + cutilagem mão e pé" data-price="R$ 105,00" data-duration="120" onclick="openPopup(this.src)">
+        <h4 style="margin:8px 0 4px">Manutenção + arte + cutilagem</h4>
+        <p class="muted">Manutenção + arte + cutilagem mão e pé.</p>
+        <strong>R$ 105,00</strong>
+      </div>
+      <div class="card">
+        <img src="assets/combo R$ 110.jpg" class="card-img combo-click" data-service="Manutenção + arte encapsulada + cutilagem mão e pé" data-price="R$ 110,00" data-duration="150" onclick="openPopup(this.src)">
+        <h4 style="margin:8px 0 4px">Manutenção + arte encapsulada</h4>
+        <p class="muted">Manutenção + arte encapsulada + cutilagem mão e pé.</p>
+        <strong>R$ 110,00</strong>
+      </div>
+    </div>
+  </section>
+
+  <section id="tabelas" class="card">
+    <h2>Serviços</h2>
+    <div class="galeria">
+      <div class="card"><img src="assets/Alongamentos.jpg" class="card-img" onclick="openPopup(this.src)"><h4 style="margin:8px 0 4px">Alongamentos</h4></div>
+      <div class="card"><img src="assets/Unhas Simples.jpg" class="card-img" onclick="openPopup(this.src)"><h4 style="margin:8px 0 4px">Unhas Simples</h4></div>
+      <div class="card"><img src="assets/manutençao.jpg" class="card-img" onclick="openPopup(this.src)"><h4 style="margin:8px 0 4px">Manutenções</h4></div>
+    </div>
+  </section>
+
+  <section id="calendario" class="card">
+    <h2>📅 Calendário</h2>
+    <div class="calendar">
+      <div class="cal-box card">
+        <div id="calMonth" style="font-weight:700"></div>
+        <div class="cal-grid" id="calGrid"></div>
+        <div class="muted" style="margin-top:8px">Dias em destaque têm agendamentos salvos neste dispositivo.</div>
+      </div>
+      <div class="bookings-list" id="bookingsList">
+        <h3 style="margin-top:0">Agendamentos do dia</h3>
+        <div id="bookingsItems" class="muted">Selecione um dia no calendário.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="agendamento" class="card">
+    <h2>Agendar Agora</h2>
+    <div style="display:flex;gap:20px;flex-wrap:wrap">
+      <form id="formAgendamento" style="flex:1;min-width:280px">
+        <label>Nome</label>
+        <input id="clienteNome" type="text" placeholder="Seu nome" required>
+
+        <label>Serviço</label>
+        <select id="servicoSelect" required>
+          <option value="">-- Escolha o serviço --</option>
+          <option value="Mão e pé decorado" data-price="R$ 60,00" data-duration="100">Mão e pé decorado — R$ 60,00</option>
+          <option value="Mão e pé" data-price="R$ 50,00" data-duration="90">Mão e pé — R$ 50,00</option>
+          <option value="Mão" data-price="R$ 25,00" data-duration="35">Mão — R$ 25,00</option>
+          <option value="Pé" data-price="R$ 25,00" data-duration="45">Pé — R$ 25,00</option>
+          <option value="Pés com unha encravada" data-price="R$ 40,00" data-duration="60">Pés com unha encravada — R$ 40,00</option>
+          <option value="Plástica dos pés" data-price="R$ 50,00" data-duration="60">Plástica dos pés — R$ 50,00</option>
+
+          <option value="Aplicação de fibra" data-price="R$ 150,00" data-duration="120">Aplicação de fibra — R$ 150,00</option>
+          <option value="Aplicação de gel na tip" data-price="R$ 100,00" data-duration="100">Aplicação de gel na tip — R$ 100,00</option>
+          <option value="Aplicação de gel moldado" data-price="R$ 120,00" data-duration="100">Aplicação de gel moldado — R$ 120,00</option>
+          <option value="Aplicação de molde f1" data-price="R$ 120,00" data-duration="90">Aplicação de molde f1 — R$ 120,00</option>
+          <option value="Banho de gel" data-price="R$ 90,00" data-duration="60">Banho de gel — R$ 90,00</option>
+          <option value="Esmaltação em gel" data-price="R$ 50,00" data-duration="60">Esmaltação em gel — R$ 50,00</option>
+          <option value="Esmaltação em gel com arte" data-price="R$ 60,00" data-duration="70">Esmaltação em gel com arte — R$ 60,00</option>
+
+          <option value="Manutenção" data-price="R$ 80,00" data-duration="90">Manutenção — R$ 80,00</option>
+          <option value="Manutenção com arte" data-price="R$ 85,00" data-duration="90">Manutenção com arte — R$ 85,00</option>
+          <option value="Manutenção com arte encapsulada" data-price="R$ 90,00" data-duration="90">Manutenção com arte encapsulada — R$ 90,00</option>
+
+          <option value="Combo Manutenção + Esmaltação em Gel" data-price="R$ 100,00" data-duration="120">Combo Manutenção + Esmaltação em Gel — R$ 100,00</option>
+          <option value="Manutenção + arte + cutilagem mão e pé (R$105)" data-price="R$ 105,00" data-duration="120">Manutenção + arte + cutilagem mão e pé — R$ 105,00</option>
+          <option value="Manutenção + arte encapsulada + cutilagem mão e pé (R$110)" data-price="R$ 110,00" data-duration="150">Manutenção + arte encapsulada + cutilagem mão e pé — R$ 110,00</option>
+        </select>
+
+        <!-- hidden duration used for blocking -->
+        <input type="hidden" id="duracaoHidden" value="60">
+
+        <label>Data</label>
+        <input id="dataSelect" type="date" required>
+
+        <label>Horário inicial (ex: 09:00)</label>
+        <input id="horaInput" type="time" required>
+
+        <div class="muted">Ao confirmar, o sistema bloqueará automaticamente o período correspondente à duração do serviço selecionado.</div>
+        <div style="margin-top:8px"><button type="submit" class="btn">Agendar Agora</button></div>
+      </form>
+
+      <div style="flex:320px 0 0;min-width:260px">
+        <div class="card">
+          <h3 style="margin-top:0">Resumo</h3>
+          <div class="muted">Atendimento:</div>
+          <div style="margin-top:6px">Seg/Qua/Sex: 10:00–19:00<br>Ter/Qui: 09:00–18:00<br>Sáb: 10:00–17:00</div>
+          <div style="margin-top:12px" class="muted">Contato</div>
+          <div style="margin-top:6px;font-weight:700">(81) 9341-3897 — WhatsApp</div>
+          <div style="margin-top:12px" class="muted">Siga-nos</div>
+          <div style="margin-top:6px;display:flex;align-items:center"><img src="assets/instagram.svg" alt="insta" style="width:16px;height:16px;margin-right:8px"><a href="https://www.instagram.com/espaco_lucimara_nails" target="_blank" style="text-decoration:none;color:var(--muted)">@espaco_lucimara_nails</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © <span id="ano"></span> Espaço Lucimara Nails • Feito com amor 💕
+  </footer>
+</div>
+
+<div id="popup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);align-items:center;justify-content:center;z-index:999" onclick="this.style.display='none'">
+  <img src="" alt="visual" style="max-width:90%;max-height:90%;border-radius:12px;box-shadow:0 0 25px rgba(255,255,255,0.2)">
+</div>
+
+<script>
+document.getElementById('ano').textContent = new Date().getFullYear();
+function openPopup(src){ const p=document.getElementById('popup'); p.querySelector('img').src=src; p.style.display='flex'; }
+
+// calendar generation
+const calGrid = document.getElementById('calGrid');
+const calMonth = document.getElementById('calMonth');
+const bookingsItems = document.getElementById('bookingsItems');
+const today = new Date();
+const year = today.getFullYear();
+const month = today.getMonth();
+calMonth.textContent = new Intl.DateTimeFormat('pt-BR',{month:'long',year:'numeric'}).format(new Date(year,month,1));
+
+function pad(n){return String(n).padStart(2,'0')}
+function dateKey(y,m,d){return y+'-'+pad(m)+'-'+pad(d)}
+function loadBookings(dateStr){ try{ const raw=localStorage.getItem('bookings-'+dateStr); return raw?JSON.parse(raw):[] }catch(e){return[]} }
+function saveBooking(dateStr,b){ const arr=loadBookings(dateStr); arr.push(b); localStorage.setItem('bookings-'+dateStr,JSON.stringify(arr)); }
+function generateCalendar(){ calGrid.innerHTML=''; const first=new Date(year,month,1); const startWeekDay=first.getDay(); const daysInMonth=new Date(year,month+1,0).getDate(); for(let i=0;i<startWeekDay;i++){ const c=document.createElement('div'); c.className='cell'; calGrid.appendChild(c); } for(let d=1; d<=daysInMonth; d++){ const key=dateKey(year,month+1,d); const c=document.createElement('div'); c.className='cell'; c.textContent=d; const b=loadBookings(key); if(b.length>0) c.classList.add('booked'); c.addEventListener('click', ()=> showBookingsFor(key)); calGrid.appendChild(c); } }
+function showBookingsFor(dateStr){ const arr=loadBookings(dateStr); const human=new Date(dateStr+'T00:00:00').toLocaleDateString('pt-BR',{weekday:'long',day:'2-digit',month:'2-digit',year:'numeric'}); if(arr.length===0){ bookingsItems.innerHTML = '<div class="muted">Nenhum agendamento neste dia ('+human+').</div>'; return } arr.sort((a,b)=> a.start.localeCompare(b.start)); let html=''; for(const a of arr){ html += '<div style="padding:8px;border-bottom:1px dashed #f2e6ea"><strong>'+a.start+' - '+a.end+'</strong><br><span class="muted">'+a.service+' — '+a.name+'</span></div>'; } bookingsItems.innerHTML = html; }
+generateCalendar();
+
+// form handling with hidden duration derived from selected service
+const form = document.getElementById('formAgendamento');
+function parseTimeToMinutes(t){ const [hh,mm]=t.split(':').map(Number); return hh*60+mm }
+function minutesToTime(m){ return pad(Math.floor(m/60))+':'+pad(m%60) }
+function getWorkingHoursFor(dateStr){ const d=new Date(dateStr+'T00:00:00'); const wd=d.getDay(); if(wd===1||wd===3||wd===5) return {open:'10:00',close:'19:00'}; if(wd===2||wd===4) return {open:'09:00',close:'18:00'}; if(wd===6) return {open:'10:00',close:'17:00'}; return null }
+
+// when service select changes update hidden duration and keep price for message
+const servSelect = document.getElementById('servicoSelect');
+const durHidden = document.getElementById('duracaoHidden');
+servSelect.addEventListener('change', ()=>{
+  const opt = servSelect.options[servSelect.selectedIndex];
+  if(opt && opt.dataset.duration){ durHidden.value = opt.dataset.duration; }
+  else { durHidden.value = 60; }
+});
+
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  const nome = document.getElementById('clienteNome').value.trim();
+  const serv = servSelect.value;
+  const price = servSelect.options[servSelect.selectedIndex].dataset.price || '';
+  const duration = parseInt(durHidden.value,10);
+  const date = document.getElementById('dataSelect').value;
+  const hora = document.getElementById('horaInput').value;
+  if(!serv){ alert('Escolha um serviço.'); return; }
+  if(!hora){ alert('Escolha um horário inicial.'); return; }
+  const start = parseTimeToMinutes(hora);
+  const end = start + duration;
+  const wh = getWorkingHoursFor(date);
+  if(!wh){ alert('Não atendemos nesse dia. Escolha outra data.'); return; }
+  if(start < parseTimeToMinutes(wh.open) || end > parseTimeToMinutes(wh.close)){ alert('Horário fora do expediente. Escolha entre '+wh.open+' e '+wh.close); return; }
+  const busy = loadBookings(date);
+  for(const b of busy){ const bs = parseTimeToMinutes(b.start); const be = parseTimeToMinutes(b.end); if(!(end <= bs || start >= be)){ alert('Conflito com outro agendamento ('+b.start+' - '+b.end+'). Escolha outro horário.'); return; } }
+  const endTime = minutesToTime(end);
+  const booking = {name:nome,service:serv + ' ' + (price||''),start:hora,end:endTime,duration:duration};
+  saveBooking(date,booking);
+  generateCalendar();
+  showBookingsFor(date);
+  const msg = 'Olá! Gostaria de agendar um horário no Espaço Lucimara Nails 💅.%0ANome: '+encodeURIComponent(nome)+'%0AServiço: '+encodeURIComponent(serv+' '+(price||''))+'%0AData: '+date+'%0AHorário: '+hora+' - '+endTime;
+  window.open('https://wa.me/558193413897?text='+msg,'_blank');
+  form.reset();
+  durHidden.value = 60;
+  alert('Agendamento salvo neste dispositivo e enviado para o WhatsApp.');
+});
+
+document.querySelectorAll('.combo-click').forEach(img=>{
+  img.addEventListener('click', ()=>{
+    document.getElementById('agendamento').scrollIntoView({behavior:'smooth'});
+    const svc = img.dataset.service || '';
+    const price = img.dataset.price || '';
+    const duration = img.dataset.duration || '90';
+    for(let i=0;i<servSelect.options.length;i++){
+      const o = servSelect.options[i];
+      if(o.value === svc || (price && o.dataset.price===price) || o.textContent.includes(svc) ){
+        servSelect.selectedIndex = i;
+        durHidden.value = duration;
+        break;
+      }
+    }
+  });
+});
+</script>
+</body>
+</html>
