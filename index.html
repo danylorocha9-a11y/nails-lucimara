@@ -264,5 +264,55 @@ document.querySelectorAll('.combo-click').forEach(img=>{
   });
 });
 </script>
+<!-- Firebase -->
+<script type="module">
+    // IMPORTANDO FIREBASE
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getDatabase, ref, set, push } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+    // CONFIG DO SEU FIREBASE  (TROCAR PELO SEU!!)
+    const firebaseConfig = {
+        apiKey: "SUA_API_KEY_AQUI",
+        authDomain: "SEU_DOMINIO.firebaseapp.com",
+        databaseURL: "https://SEU_DATABASE.firebaseio.com",
+        projectId: "SEU_PROJECT_ID",
+        storageBucket: "SEU_BUCKET.appspot.com",
+        messagingSenderId: "SEU_SENDER_ID",
+        appId: "SEU_APP_ID"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    // SEU UID PRIVADO (só você enxerga os dados completos)
+    const ADMIN_UID = "5ASPR9cFXIXty4OxZGX9AYOURrj2"; // <-- coloquei seu UID aqui
+
+    // FUNÇÃO PARA ENVIAR OS DADOS PRO FIREBASE
+    window.saveBookingToFirebase = function (name, service, date, startTime, endTime, duration) {
+
+        // 1. SALVAR HORÁRIO PÚBLICO (sem nome)
+        const publicRef = ref(db, "agenda_publica");
+        push(publicRef, {
+            date: date,
+            start: startTime,
+            end: endTime,
+            service: service
+        });
+
+        // 2. SALVAR DADOS COMPLETOS PARA VOCÊ SOMENTE
+        const privateRef = ref(db, "agenda_privada/" + ADMIN_UID);
+        push(privateRef, {
+            name: name,
+            service: service,
+            date: date,
+            start: startTime,
+            end: endTime,
+            duration: duration,
+            createdAt: Date.now()
+        });
+
+        console.log("Agendamento enviado para o Firebase!");
+    }
+</script>
 </body>
 </html>
