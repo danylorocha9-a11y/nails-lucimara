@@ -372,5 +372,68 @@ onAuthStateChanged(auth, user => {
   <h2>Painel do Administrador</h2>
   <button id="logoutBtn">Sair</button>
 </div>
+  <button id="loginBtn" style="
+    padding: 10px 20px;
+    background-color: #ff7bbf;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+">
+    Entrar com Google
+</button>
+
+<div id="userInfo" style="margin-top:15px; display:none;">
+    <p id="userName"></p>
+    <button id="logoutBtn" style="
+        padding: 8px 16px;
+        background-color: #888;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        cursor: pointer;
+    ">
+        Sair
+    </button>
+</div>
+  <script>
+
+// pega o ícone pelo ID (coloque esse ID lá no ícone!)
+document.getElementById("adminIcon").addEventListener("click", function() {
+    document.getElementById("login-container").style.display = "block";
+});
+
+// botão login normal
+document.getElementById("loginBtn").addEventListener("click", function() {
+    const email = document.getElementById("emailInput").value;
+    const pass = document.getElementById("passwordInput").value;
+
+    signInWithEmailAndPassword(auth, email, pass)
+        .then(() => {
+            document.getElementById("login-container").style.display = "none";
+            document.getElementById("painel").style.display = "block";
+        })
+        .catch(() => {
+            document.getElementById("loginError").innerText = "Login inválido";
+        });
+});
+
+// login google
+document.getElementById("googleBtn").addEventListener("click", function() {
+    signInWithPopup(auth, provider)
+        .then(() => {
+            document.getElementById("login-container").style.display = "none";
+            document.getElementById("painel").style.display = "block";
+        })
+        .catch(() => alert("Erro ao logar com Google"));
+});
+
+// botão sair
+document.getElementById("logoutBtn").addEventListener("click", function() {
+    signOut(auth).then(() => location.reload());
+});
+
+</script>
 </body>
 </html>
